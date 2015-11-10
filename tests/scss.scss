@@ -1,0 +1,35 @@
+/* should fail */
+.bad {
+  border: 13px;
+  border-left: 10%;
+  border-top: 3px dashed red;
+  border-color: red;
+  border-style: dotted;
+  border-bottom-width: 2px;
+}
+
+.evil-class {
+  .bad {
+    border: 13px;
+    border-left: 10%;
+    border-top: 3px dashed red;
+    border-color: red;
+    border-style: dotted;
+    border-bottom-width: 2px;
+  }
+}
+
+/* should pass */
+.cool-really-good-selector {
+  @include border;
+
+  .nested {
+    @include border(top bottom);
+  }
+}
+
+.great {
+  @include border(left);
+  border-radius: 1px;
+  border-top-left-radius: 1px;
+}
